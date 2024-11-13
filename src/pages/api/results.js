@@ -27,17 +27,25 @@ buscar.addEventListener('input', async () => {
     let name = buscar.value;
     if (name) {
         rel.style.display = "flex";
-        rel.innerHTML = "";
         const datos = await getName(name);
         const resultado = datos.results;
-
-        resultado.forEach(({ title, id }) => {
-            elementLi(`${title}`, `/resultadoPeli/${id}`)
-            
-        });
-
+        if(resultado.length > 0) {
+            rel.innerHTML = "";
+            resultado.forEach(({ title, id }) => {
+                elementLi(`${title}`, `/resultadoPeli/${id}`)
+            });
+        } else {
+            rel.innerHTML = "";
+            rel.textContent = "No se encontro la pelicula"
+        }
     } else {
         rel.innerHTML = "";
         rel.style.display = "none";
     }
 });
+
+window.addEventListener("click", event => {
+    if(!rel.contains(event.target) && !buscar.contains(event.target)) {
+        rel.style.display = "none"
+    }
+})
