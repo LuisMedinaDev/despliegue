@@ -1,0 +1,17 @@
+---
+import MovieCard from "../global/MovieCard.astro";
+const { categoria, clave, categoriaTipo, slice} = Astro.props
+import { get } from "../../pages/api/api";
+const { body } = await get(categoria, clave);
+const resultado = JSON.parse(body);
+---
+
+<section class="py-28 ">
+    <h2 class="font-bold text-5xl text-textPrimario mb-20">{categoriaTipo}</h2>
+    <article class="grid grid-cols-[repeat(auto-fill,minmax(153px,1fr))]  md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]  gap-12">
+                {
+                    resultado.slice(5,15).map(pelicula => <MovieCard pelicula={pelicula} />)
+                }
+    </article>
+</section>
+</article>

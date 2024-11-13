@@ -1,0 +1,22 @@
+<form
+  class="flex gap-5 rounded-[1.5rem] py-5 md:py-2 px-6 bg-[#95969b2e] w-96 relative"
+>
+  <label for="buscar">
+    <button type="submit" id="enviar">
+      <img src="/buscar.webp" alt="search" class="h-5 cursor-pointer" />
+    </button>
+  </label>
+  <input
+    id="buscar"
+    type="text"
+    placeholder="Buscar película"
+    class="bg-transparent border-none outline-none text-2xl md:text-lg w-full"
+  />
+  <ul
+    id="search-results"
+    class="text-2xl flex search-results absolute top-[7rem] md:top-[5rem] py-5 px-4 flex-col bg-[#3f4047e2] backdrop-blur-[20px] rounded-[.8rem] gap-4 h-auto"
+  >
+  </ul>
+</form>
+
+<script src="../../pages/api/results.js"></script>

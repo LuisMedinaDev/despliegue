@@ -1,0 +1,15 @@
+---
+const { pelicula } = Astro.props;
+---
+    <a href={`/infoPeli/${pelicula.id}`} class="relative inline-block  rounded-[.8rem] overflow-hidden text-textPrimario hover:scale-[1.07] duration-200 ">
+    
+    <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} class="" alt={pelicula.title}>
+ 
+    <div class="bg-[#8b93ce20] flex flex-col py-3 px-3">
+        <h2 class="font-bold text-[1.1rem] max-w-[75%] truncate ">{pelicula.title}</h2>
+        <span class="font-normal text-[1rem]">{pelicula.release_date}</span>
+        <div class="h-[3rem] w-[3rem] rounded-full border-4 flex items-center justify-center absolute right-5  border-[#95969b]">
+            <span class="font-bold">{parseInt(pelicula.vote_average)}%</span>
+        </div>
+    </div>
+</a>

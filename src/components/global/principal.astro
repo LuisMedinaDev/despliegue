@@ -1,0 +1,50 @@
+---
+const { categoria, clave } = Astro.props
+import { get } from "../../pages/api/api";
+const { body } = await get(categoria, clave);
+const resultado = JSON.parse(body);
+
+import MovieCardRandom from "./MovieCardRandom.astro";
+
+---
+
+<section class="flex md:flex-row flex-col  md:items-center md:justify-center py-28 gap-10 ">
+
+      {
+        resultado.slice(0, 1).map((pelicula) => (
+          <article class="md:w-[72rem] min-h-[51rem] relative flex text-textPrimario ">
+            <img
+             src={`https://image.tmdb.org/t/p/w500${pelicula.backdrop_path}`}
+              class=" h-full rounded-[1rem] object-cover z-[-1] absolute opacity-20"
+            />
+  
+            <div class="p-[2rem] flex flex-col gap-5">
+              <img
+                src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
+                class="w-[18rem] h-[27rem] rounded-[.9rem] object-cover"
+              />
+  
+  <h2 class="text-5xl">
+            {pelicula.title}{" "}
+          </h2>
+
+          <div class="text-2xl flex flex-col font-bold">
+            <span>{pelicula.release_date}</span>
+            <div class="flex items-center gap-3">
+              <span
+                >Popularidad: <span class="text-xl">{pelicula.popularity}</span></span>              
+              <span class="h-[5rem] w-[5rem] rounded-full border-[6px] flex items-center justify-center right-5 border-textPrimario">
+                {parseInt(pelicula.vote_average)}%
+              </span>
+            </div>
+          </div>
+            
+              <p class="text-xl font-bold">{pelicula.overview}</p>
+            </div>
+          </article>
+        ))
+      }
+
+  <MovieCardRandom/>
+
+  </section>

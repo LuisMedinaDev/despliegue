@@ -1,0 +1,76 @@
+---
+import Filtro from "../global/filtro.astro"
+import Buscar from "../global/buscar.astro"
+---
+
+<header class="header bg-colorPrimario fixed w-full z-[99999]">
+    <nav class="text-textPrimario flax">
+        <div class="flex flex-row gap-10 items-center justify-between w-[85%] m-auto md:py-6 py-8 ">
+            <div class="flex items-center justify-center gap-10 relative">
+                <img src="/logo.webp" alt="logo" class="md:h-10 h-12 cursor-pointer">
+                <input type="checkbox" id="menu" class="hidden">
+                <ul class=" z-[9999] flex flex-col items-center justify-center gap-16 md:gap-10 text-3xl md:text-xl  fixed md:static top-28 left-0 w-full py-24 md:py-0 md:flex-row bg-colorSecondary font-bold md:font-normal text-textSecundario md:bg-transparent md:text-textPrimario" id="navBarMovile">
+
+                    <li class="hover:text-textSecundario">
+                        <a href="https://movie-hub-ashy.vercel.app/" class="linkHeader">Inicio</a></li>
+
+                    <li class="hover:text-textSecundario flex items-center justify-center"><a href="/peliculas/pelicula" class="linkHeader">Peliculas</a></li>
+
+                    <li class="relative flex li-filtro flex-col items-center justify-center ">
+                        
+                        <a href="#" class="linkHeader list-hover:text-textSecundario">Filtrar</a>
+                        <Filtro/>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            <Buscar/>
+            
+            <label for="menu" class="md:hidden">
+                <img src="/menu.svg" alt="" class="h-11 ">
+            </label>
+            
+        </div>
+    </nav>
+</header>
+
+<style>
+  @media(width <= 768px){
+    #navBarMovile {
+    @apply transition-all duration-300;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  #menu:checked ~ #navBarMovile {
+    @apply transition-all duration-300;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+    ul{
+    background: linear-gradient(#010015,#000211fe)
+  }
+  }
+
+  
+</style>
+
+    
+<script>
+    const liFiltro = document.querySelector('.li-filtro');
+    const ulFiltro = document.querySelector('.ul-filtro');
+
+    liFiltro.addEventListener('mouseover', ()=> {
+        ulFiltro.style.display = 'flex'
+    })
+
+    ulFiltro.addEventListener('mouseout', ()=> {
+        ulFiltro.style.display = 'none'
+    })
+
+    document.body.addEventListener('mouseout', event => {
+        if(!ulFiltro.contains(event.target) && !liFiltro.contains(event.target)) {
+            ulFiltro.style.display = 'none';
+        }
+    })
+
+</script>

@@ -1,0 +1,82 @@
+---
+const categorias = ["popular", "now_playing", "top_rated", "upcoming"];
+const CategoriaRandom = ()=> categorias[Math.floor(Math.random() * 4)]
+
+import { get } from "../../pages/api/api";
+const { body } = await get(CategoriaRandom(), "");
+const peliculas = JSON.parse(body);
+---
+
+
+
+<article class="flex md:flex-col gap-5 container md:w-auto">
+
+    <div class="flex md:flex-col gap-5">
+        <div class="flex gap-5">
+            {peliculas.slice(0,2).map(pelicula => (
+                <a href={`/infoPeli/${pelicula.id}`} class=" overflow-hidden w-[16rem] relative rounded-[.8rem]  text-textPrimario hover:scale-[1.07] duration-200 inline-block item">
+            
+            <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} class="h-[20rem] w-full" alt={pelicula.title}>
+         
+            <div class="bg-[#8b93ce20] flex flex-col py-3 px-3">
+                <h2 class="font-bold text-[1.1rem] max-w-[75%] truncate ">{pelicula.title}</h2>
+                <span class="font-normal text-[1rem]">{pelicula.release_date}</span>
+                <div class="h-[3rem] w-[3rem] rounded-full border-4 flex items-center justify-center absolute right-5  border-[#95969b]">
+                    <span class="font-bold">{parseInt(pelicula.vote_average)}%</span>
+                </div>
+            </div>
+        </a>))}
+        
+        </div>
+           <div class="flex gap-5">
+            {peliculas.slice(2,4).map(pelicula => (
+                <a href={`/infoPeli/${pelicula.id}`} class=" overflow-hidden w-[16rem] relative rounded-[.8rem]  text-textPrimario hover:scale-[1.07] duration-200 inline-block item">
+            
+            <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} class="h-[20rem] w-full" alt={pelicula.title}>
+         
+            <div class="bg-[#8b93ce20] flex flex-col py-3 px-3">
+                <h2 class="font-bold text-[1.1rem] max-w-[75%] truncate ">{pelicula.title}</h2>
+                <span class="font-normal text-[1rem]">{pelicula.release_date}</span>
+                <div class="h-[3rem] w-[3rem] rounded-full border-4 flex items-center justify-center absolute right-5  border-[#95969b]">
+                    <span class="font-bold">{parseInt(pelicula.vote_average)}%</span>
+                </div>
+            </div>
+        </a>))}
+        </div>
+    </div>
+
+
+
+
+
+    <div class="flex gap-5 md:hidden">
+        {peliculas.slice(4,10).map(pelicula => (
+            <a href={`/infoPeli/${pelicula.id}`} class=" overflow-hidden w-[16rem] relative rounded-[.8rem]  text-textPrimario hover:scale-[1.07] duration-200 inline-block item">
+        
+        <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} class="h-[20rem] w-full" alt={pelicula.title}>
+     
+        <div class="bg-[#8b93ce20] flex flex-col py-3 px-3">
+            <h2 class="font-bold text-[1.1rem] max-w-[75%] truncate ">{pelicula.title}</h2>
+            <span class="font-normal text-[1rem]">{pelicula.release_date}</span>
+            <div class="h-[3rem] w-[3rem] rounded-full border-4 flex items-center justify-center absolute right-5  border-[#95969b]">
+                <span class="font-bold">{parseInt(pelicula.vote_average)}%</span>
+            </div>
+        </div>
+    </a>))}
+    </div>
+</article>
+
+
+
+<style>
+    @media(width <= 768px) {
+    .container {
+  scroll-snap-type: x mandatory; /* Controla la dirección del scroll y su comportamiento */
+  overflow-x: scroll; /* Habilita el scroll horizontal */ /* Permite a los elementos hijos colocarse en línea */
+  scroll-behavior: smooth; /* Agrega un desplazamiento suave */
+  scrollbar-width: none;
+}
+    }
+
+
+  </style>

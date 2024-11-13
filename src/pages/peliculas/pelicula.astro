@@ -1,0 +1,13 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Peliculas from "../../components/landing/peliculas.astro"
+---
+
+<Layout title="Movie Hub">
+	<Peliculas categoria="popular" categoriaTipo="Populares" clave=""/>
+	<Peliculas categoria="now_playing" categoriaTipo="En caltelera" clave=""/>
+	<Peliculas categoria="top_rated" categoriaTipo="Mejor valoradas" clave=""/>
+	<Peliculas categoria="day" categoriaTipo="Tendencias del dia" clave="trending/"/>
+	<Peliculas categoria="week" categoriaTipo="Tendencias de la semana" clave="trending/"/>
+	<Peliculas categoria="upcoming" categoriaTipo="Proximamente" clave=""/>
+</Layout>

@@ -1,0 +1,40 @@
+---
+import FiltroLink from "./filtro-link.astro"
+const FILTROLINK = [
+    {
+        title: 'Tendencias day',
+        href: '/filtro/tendenciasDay'
+    },
+    {
+        title: 'Tendencias week',
+        href: '/filtro/tendenciasWeek'
+    },
+    {
+        title: 'Mejor valoradas',
+        href: '/filtro/mejorValoradas'
+    },
+    {
+        title: 'En caltelera',
+        href: '/filtro/enCaltelera'
+    },
+    {
+        title: 'Proximamente',
+        href: '/filtro/proximamente'
+    }
+    ]
+---
+
+<ul class="ul-filtro md:absolute top-0 translate-y-[4rem]   py-5 px-4  flex-col min-w-[15rem] bg-[#3f40479d] md:backdrop-blur-[20px] rounded-[.8rem] hidden">
+
+    <div class="hidden md:flex absolute left-2/4 right-2/4 translate-x-[-50%] translate-y-[-50%] w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[17px] top-[-.7rem]  border-b-[#3f4047e5]">
+    </div>
+
+    <li>
+        <h2 class="text-center font-normal md:font-bold">Categorias:</h2>
+        <div class="font-normal md:font-bold py-3 flex flex-col">
+            {FILTROLINK.map(({title, href}) => (
+                <FiltroLink title={title} href={href}></FiltroLink>
+            ))}
+        </div>
+    </li>        
+</ul>

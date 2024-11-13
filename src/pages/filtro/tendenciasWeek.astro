@@ -1,0 +1,10 @@
+---
+import Principal from "../../components/global/principal.astro";
+import Layout from "../../layouts/Layout.astro";
+import Peliculas from "../../components/landing/peliculas.astro";
+---
+
+<Layout title="Tendencias de la semana">
+    <Principal categoria="week" clave="trending/"/>
+    <Peliculas categoria="week" categoriaTipo="Tendencias" clave="trending/"/>
+</Layout>
