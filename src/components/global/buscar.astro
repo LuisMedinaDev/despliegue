@@ -12,11 +12,17 @@
     placeholder="Buscar película"
     class="bg-transparent border-none outline-none text-2xl md:text-lg w-full"
   />
-  <ul
-    id="search-results"
-    class="text-2xl flex search-results absolute top-[7rem] md:top-[5rem] py-5 px-4 flex-col bg-[#3f4047e2] backdrop-blur-[20px] rounded-[.8rem] gap-4 h-auto"
+
+  <ul id="search-results" 
+    class="flex flex-col gap-4 hidden z-[99994] text-2xl md:text-xl  search-results absolute md:top-[4rem] top-[6rem] left-1/2 transform -translate-x-1/2 bg-[#3f4047e2] backdrop-blur-[20px] rounded-[.8rem] max-h-[60vh] overflow-auto py-4 px-6 w-[130%] "
   >
+   
   </ul>
 </form>
-
+<style>
+  ul {
+    scrollbar-width: none;
+  }
+  
+</style>
 <script src="../../pages/api/results.js"></script>

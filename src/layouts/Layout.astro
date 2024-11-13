@@ -24,6 +24,11 @@ import Header from "../components/landing/header.astro";
 	</body>
 </html>
 <style is:global>
+	html{
+		scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #0a0d18 #000;
+	}
 	@media (width >= 768px) {
 html {
     font-size: clamp(6px, .8vw, 15.6px);
@@ -33,6 +38,7 @@ html {
 @media (width <= 767px) {
 html {
     font-size: clamp(6px, 2.2vw, 16px);
+	
 }
 }
 </style>

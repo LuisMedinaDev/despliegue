@@ -3,8 +3,6 @@ import { getName } from "../../pages/api/api";
 const buscar = document.getElementById("buscar");
 const rel = document.querySelector("#search-results");
 
-
-
 const elementLi = (textContent, href) => {
     const fragment = document.createDocumentFragment();
     const li = document.createElement("li");
@@ -15,7 +13,8 @@ const elementLi = (textContent, href) => {
     a.classList.add("li-a");
     a.href = href; 
     a.textContent = textContent;
-
+    li.style.paddingBottom = "10px"
+    li.style.borderBottom = ".1px solid #7b7b7b8f"
     li.appendChild(a);
     fragment.appendChild(li);
     rel.appendChild(fragment);
